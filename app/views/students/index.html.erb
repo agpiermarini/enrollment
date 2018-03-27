@@ -1,6 +1,6 @@
 <h3>All Students</h3>
 
 <% @students.each do |student| %>
-  <p>Student Name: <%= student.name  %></p>
+  <p>Student Name: <%= link_to "#{student.name}", student_path(student) %></p>
   <%= link_to "Delete", student_path(student), method: :delete %>
 <% end %>

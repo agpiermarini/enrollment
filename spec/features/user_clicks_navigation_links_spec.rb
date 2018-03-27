@@ -32,4 +32,16 @@ describe 'User' do
       expect(current_path).to eq(new_student_path)
     end
   end
+
+  describe 'visits student index and clicks on students name' do
+    it 'and is redirected to that student_path' do
+      student_1 = Student.create(name: "Cindy")
+      student_2 = Student.create(name: "Bob")
+
+      visit students_path
+      click_on "#{student_1.name}"
+
+      expect(current_path).to eq(student_path(student_1))
+    end
+  end
 end

@@ -28,14 +28,23 @@ class StudentsController < ApplicationController
 
   def update
     @student = Student.find(params[:id])
-    @student.update(student_params)
-    if @student.save
+    if @student.update(student_params)
       flash[:success] = "You changed this students name to #{@student.name}"
       redirect_to student_path(@student)
     else
       flash[:failure] = "You did successfully change this student's name"
       redirect_to edit_student_path(@student)
-    end  
+    end
+  end
+
+  def destroy
+    @student = Student.find(params[:id])
+    if @student.destroy
+      flash[:success] = "#{@student.name} has been destroyed :("
+      redirect_to students_path
+    else
+      redirect_to students_path
+    end
   end
 
   private

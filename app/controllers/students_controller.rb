@@ -22,9 +22,25 @@ class StudentsController < ApplicationController
     end
   end
 
+  def edit
+    @student = Student.find(params[:id])
+  end
+
+  def update
+    @student = Student.find(params[:id])
+    @student.update(student_params)
+    if @student.save
+      flash[:success] = "You changed this students name to #{@student.name}"
+      redirect_to student_path(@student)
+    else
+      flash[:failure] = "You did successfully change this student's name"
+      redirect_to edit_student_path(@student)
+    end  
+  end
+
   private
 
   def student_params
-    params.require(:student).permit(:name)
+    params.require(:student).permit(:id, :name)
   end
 end

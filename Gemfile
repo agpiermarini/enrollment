@@ -43,6 +43,7 @@ group :development, :test do
   gem 'launchy'
   gem 'database_cleaner'
   gem 'shoulda-matchers', '~> 3.1'
+  gem 'pry'
 end
 
 group :development do

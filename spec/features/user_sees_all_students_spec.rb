@@ -8,6 +8,7 @@ describe 'User' do
 
       visit students_path
 
+
       expect(page).to have_content("All Students")
       expect(page).to have_content(student_1.name)
       expect(page).to have_content(student_2.name)
